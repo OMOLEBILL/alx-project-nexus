@@ -418,7 +418,7 @@ class ProductSalesViewset(ViewSet):
 
     def create(self, request, *args, **kwargs):
         """Create a new ProductSale"""
-        data = request.data
+        data = request.data.copy()
         product_uuid = data.pop("product", None)
         sale_uuid = data.pop("sale", None)
         quantity_sold = data.get("quantity_sold", "0")
@@ -772,7 +772,7 @@ class PurchaseViewset(ViewSet):
     def create(self, request, *args, **kwargs):
         """create a new purchase"""
         print(request.data)
-        data = request.data
+        data = request.data.copy()
         product_uuid = data.pop("product_id")
         supplier_uuid = data.pop("supplier_id")
         employee_uuid = data.pop("user_id")
